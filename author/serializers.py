@@ -15,18 +15,6 @@ class AuthorSerializer(serializers.ModelSerializer):
             "retired"
         ]
 
-    id = serializers.IntegerField(read_only=True)
-    first_name = serializers.CharField(max_length=64)
-    last_name = serializers.CharField(max_length=64)
-    pseudonym = serializers.CharField(
-        max_length=64,
-        allow_null=True,
-        allow_blank=True,
-        required=False
-    )
-    age = serializers.IntegerField()
-    retired = serializers.BooleanField()
-
     def create(self, validated_data):
         return Author.objects.create(**validated_data)
 
